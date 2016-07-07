@@ -9,10 +9,10 @@ showSelector : Html Msg
 showSelector =
     div []
         [ button 
-              [ class "btn btn-default m1", onClick ShowList ] 
+              [ class "btn btn-primary m1", onClick ShowList ] 
               [ text "Show"]
         , button 
-              [ class "btn white bg-blue m1", onClick AddShare ] 
+              [ class "btn btn-primary m1", onClick AddShare ] 
               [ text "Add"]
         ]  
 

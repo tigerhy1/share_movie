@@ -1,6 +1,8 @@
 'use strict';
 
+require('bootstrap/dist/css/bootstrap.min.css');
 require('font-awesome/css/font-awesome.css');
+require('./share_movie.css');
 
 // Require index.html so it gets copied to dist
 require('./index.html');
