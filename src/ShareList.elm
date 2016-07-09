@@ -13,4 +13,31 @@ showList items =
 shareItemRow : ShareItem -> Html Msg
 shareItemRow item =
     div [ class "well"] 
-        [ text item.movie_name ]
+        [ span [] [ text "xxx推荐了: " ], 
+          span [ style
+                 [("font-weight", "bold")
+                 ]
+               ] 
+               [ text item.movie_name ],
+          {--
+          span [ style 
+                    [ ("font-size", "0.5em"), 
+                      ("text-align", "right")
+                    ]
+               ]
+               [ text "@2016-07-08 11:18"
+               ],
+          --}
+          p [ style 
+              [ ("padding", "1em 1em 1em 2em")
+              ]
+            ]
+            [ text item.share_comment ],
+          p [ style 
+                    [ ("font-size", "0.1em"), 
+                      ("font-style", "oblique")
+                    ]
+               ]
+               [ text "@2016-07-08 11:18"
+               ]
+        ]

@@ -1,3 +1,11 @@
 .m1 {
     margin: 1em 1em 1em 1em;
 }
+
+.fluid-self {
+    width: 100%;
+}
+
+.my-box {
+    width: 480px;
+}

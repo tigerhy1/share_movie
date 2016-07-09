@@ -13,15 +13,19 @@ view model =
     case model of
         ShowListModel list  -> 
             div[ class "container-fluid"]
-               [
+               [ div [ class "row m1" ] []
+                {--
                 div [ class "col-md-2 col-xs-1"]
                     [],
-                div [ class "col-md-8 col-xs-10"] 
+                --}
+               , div [ class "m1"] 
                     [ ShareList.showList list 
                     , showSelector  
-                    ],
+                    ]
+                {--
                 div [ class "col-md-2 col-xs-1"]
                     []
+                --}
                ]
         AddModel item ->
             div []

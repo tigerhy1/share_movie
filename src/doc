@@ -10,3 +10,17 @@
 
 2. list和add做成两个模块
 
+下一步改进：
+
+不用bootstrap,看用最基本的东西怎么达到效果。
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+这句话很有用呀
+
+对输入为空的处理.
+
+2016-07-09
+
+把share_list再调好看一些.
+
