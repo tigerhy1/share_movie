@@ -28,9 +28,10 @@ view model =
                 --}
                ]
         AddModel item ->
-            div []
-                [ ShareAdd.addShare item
-                , showSelector
+            div [ class "container-fluid" ]
+                [ div [class "m1"] 
+                    [ ShareAdd.addShare item
+                    ]
                 ]
             
              

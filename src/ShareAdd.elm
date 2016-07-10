@@ -1,7 +1,7 @@
 module ShareAdd exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (type', name, value, class)
+import Html.Attributes exposing (type', name, value, class, id, for, rows)
 import Messages exposing (..)
 import Models exposing (..)
 import Html.Events exposing (onInput, onClick)
@@ -9,17 +9,17 @@ import Html.Events exposing (onInput, onClick)
 addShare : ShareItem -> Html Msg
 addShare item = 
     div [ class "p2"  ]
-        [ text "Hello, In addShare" 
-        , div [] [
-            input [ type' "text", name "id", onInput ChangeId ] []
-          ]
-        , div [] [
-            input [ type' "text", name "name", onInput ChangeName ] []
-          ]
-        , div [] [
-            input [ type' "text", name "comment", onInput ChangeComment ] []
-          ]
-        , div [] [
-            input [ class "btn white bg-blue", type' "submit", value "Submit", onClick SubmitAddShare ] []
-          ]
+        [ form [] 
+            [ div [ class "form-group" ] [
+                label [ for "name"] [ text "电影名" ], 
+                input [ type' "text", class "form-control",name "name", id "name", onInput ChangeName ] []
+              ]
+            , div [ class "form-group" ] [
+                label [ for "comment"] [ text "推荐理由" ], 
+                textarea [ class "form-control", rows 3, name "comment", id "comment", onInput ChangeComment ] []
+              ]
+            , div [ class "form-group" ] [
+                input [ class "btn btn-primary", type' "submit", value "Submit", onClick SubmitAddShare ] []
+              ]
+            ]
         ] 
