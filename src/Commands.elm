@@ -9,12 +9,31 @@ import Messages exposing (Msg(..))
 
 fetchAll : Cmd Msg
 fetchAll =
-   Http.get collectionDecoder fetchAllUrl
-       |> Task.perform FetchAllFail FetchAllDone
+    fetchTask
+    |> Task.perform FetchAllFail FetchAllDone
+
+fetchTask : Task.Task Http.Error (List ShareItem)
+fetchTask =
+    let body = Http.string ("""{ "offset":0,"size":2 }""")
+    
+        config ={ verb = "POST"
+                , headers = [ ( "Content-Type", "application/json" ) ]
+                {--, headers = []--}
+                , url = fetchAllUrl
+                , body = body
+                }
+    in 
+        Http.send Http.defaultSettings config
+            |> Http.fromJson collectionDecoder
 
 fetchAllUrl : String
 fetchAllUrl =
+    {--
     "http://localhost:4000/shares"
+    --}
+    {----}
+    "http://localhost:8080/get-test"
+    --}
 
 collectionDecoder : Decode.Decoder (List ShareItem)
 collectionDecoder =
@@ -24,6 +43,7 @@ shareItemDecoder : Decode.Decoder ShareItem
 shareItemDecoder =
     Decode.object3 ShareItem
         ("id" := Decode.int)
+        {--("user_name" := Decode.string)--}
         ("movie_name" := Decode.string)
         ("share_comment" := Decode.string)
         
