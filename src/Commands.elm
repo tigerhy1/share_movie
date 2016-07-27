@@ -41,9 +41,9 @@ collectionDecoder =
 
 shareItemDecoder : Decode.Decoder ShareItem
 shareItemDecoder =
-    Decode.object3 ShareItem
+    Decode.object4 ShareItem
         ("id" := Decode.int)
-        {--("user_name" := Decode.string)--}
+        ("user_name" := Decode.string)
         ("movie_name" := Decode.string)
         ("share_comment" := Decode.string)
         

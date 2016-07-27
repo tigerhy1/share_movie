@@ -12,8 +12,8 @@ import Commands exposing (fetchAll)
 init : ( Model, Cmd Msg )
 init =
     (ShowListModel 
-     [ ShareItem 1 "a" "b"
-     , ShareItem 2 "c" "d"
+     [ ShareItem 1 "a" "b" "d"
+     , ShareItem 2 "c" "d" "d"
      ]  
      , fetchAll )
  

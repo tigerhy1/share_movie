@@ -12,7 +12,7 @@ update msg model =
             ( model, fetchAll )
         
         AddShare ->
-            ( AddModel (ShareItem 0 "" ""), Cmd.none )
+            ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
 
         FetchAllDone shares ->
             ( ShowListModel shares, Cmd.none )  
@@ -21,26 +21,26 @@ update msg model =
             ( model, Cmd.none )
       
         SubmitAddShare ->
-            ( AddModel (ShareItem 0 "" ""), add model ) 
+            ( AddModel (ShareItem 0 "" "" ""), add model ) 
     
         ChangeId id ->
             case model of
                 AddModel item ->
-                    ( AddModel (ShareItem (toInt id |> Result.toMaybe |> Maybe.withDefault 0 ) item.movie_name item.share_comment), Cmd.none ) 
+                    ( AddModel (ShareItem (toInt id |> Result.toMaybe |> Maybe.withDefault 0 ) item.user_name item.movie_name item.share_comment), Cmd.none ) 
                 ShowListModel list ->
                     ( model, Cmd.none )
 
         ChangeName name ->
             case model of 
                 AddModel item ->
-                    ( AddModel (ShareItem item.id name item.share_comment), Cmd.none ) 
+                    ( AddModel (ShareItem item.id item.user_name name item.share_comment), Cmd.none ) 
                 ShowListModel list ->
                     ( model, Cmd.none )
 
         ChangeComment comment ->
             case model of 
                 AddModel item ->
-                    ( AddModel (ShareItem item.id item.movie_name comment ) , Cmd.none )
+                    ( AddModel (ShareItem item.id item.user_name item.movie_name comment ) , Cmd.none )
                 ShowListModel list ->
                     ( model, Cmd.none )
     

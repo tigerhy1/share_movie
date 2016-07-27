@@ -4,6 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Models exposing (ShareItem)
 import Messages exposing (..)
+import String exposing (append)
 
 showList : List ShareItem -> Html Msg
 showList items =
@@ -13,7 +14,7 @@ showList items =
 shareItemRow : ShareItem -> Html Msg
 shareItemRow item =
     div [ class "well"] 
-        [ span [] [ text "xxx推荐了: " ], 
+        [ span [] [ text (append item.user_name "推荐了: ") ], 
           span [ style
                  [("font-weight", "bold")
                  ]
