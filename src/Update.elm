@@ -15,7 +15,8 @@ update msg model =
             ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
 
         FetchAllDone shares ->
-            ( ShowListModel shares, Cmd.none )  
+            ( ShowListModel shares, Cmd.none )
+            {--( AddModel (ShareItem 0 "" "" ""), Cmd.none )--}
 
         FetchAllFail error ->
             ( model, Cmd.none )
@@ -45,7 +46,7 @@ update msg model =
                     ( model, Cmd.none )
     
         AddSuccess item ->
-            ( model, Cmd.none ) 
+            ( AddModel (ShareItem 0 "" "" ""), Cmd.none ) 
 
         AddFail err ->
-            ( model, Cmd.none )
+            ( AddModel (ShareItem 0 "" "" ""), Cmd.none )

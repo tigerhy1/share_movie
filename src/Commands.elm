@@ -14,7 +14,7 @@ fetchAll =
 
 fetchTask : Task.Task Http.Error (List ShareItem)
 fetchTask =
-    let body = Http.string ("""{ "offset":0,"size":2 }""")
+    let body = Http.string ("""{ "offset":0,"size":5 }""")
     
         config ={ verb = "POST"
                 , headers = [ ( "Content-Type", "application/json" ) ]
@@ -49,7 +49,10 @@ shareItemDecoder =
         
 addUrl : String
 addUrl =
+    {--
     "http://localhost:4000/shares/"
+    --}
+    "http://localhost:8080/add-share"
 
 addTask : ShareItem -> Task.Task Http.Error ShareItem
 addTask item =
@@ -84,7 +87,7 @@ shareItemEncoded : ShareItem -> Encode.Value
 shareItemEncoded item =
     let 
         list =
-            [ ( "id", Encode.int item.id )
+            [ ( "uid", Encode.int 1 )
             , ( "movie_name", Encode.string item.movie_name )
             , ( "share_comment", Encode.string item.share_comment )       
             ]

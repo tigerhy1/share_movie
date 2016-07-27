@@ -54,7 +54,16 @@ task: 异步操作，能成功，也可能失败.
 
 在调试的时候发现，elm貌似没有什么好的console.log的方式来调试。要留意一下好的调试方式.
 
+下一步是调通add-share
 
+界面add-share，不要直接跳回到列表,还是报一下添加成功.
+
+跑倒是跑通了，但是得到结果之后的行为:留在addShare的那个页面的行为，还没弄出来.
+(好像是要弄navigation, 又感觉不是navigation的问题，是fetch到的结果的问题)
+
+google下: elm How to debug
+
+bug: get-share , size大的话,结果会爆
 
 
 
