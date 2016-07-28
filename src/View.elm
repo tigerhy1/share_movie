@@ -1,12 +1,14 @@
 module View exposing (..)
 
-import Html exposing (Html, div, text)
+import Html exposing (Html, div, text, button, h1)
 import Html.Attributes exposing (class)
-import Messages exposing (Msg)
+import Messages exposing (..)
 import Models exposing (Model(..))
 import ShareList exposing (showList)
 import ShareAdd exposing (addShare)
+import ShareAdded exposing (shareAdded)
 import Selector exposing (..)
+import Html.Events exposing (onClick)
 
 view : Model -> Html Msg
 view model =
@@ -33,13 +35,8 @@ view model =
                     [ ShareAdd.addShare item
                     ]
                 ]
-        Added item ->
-            div [ class "container-fluid"]
-                [ div [] [ text "失败了吗？"]
-                , div [] [ text item.user_name]
-                , div [] [ text item.movie_name]
-                , div [] [ text item.share_comment]
-                ]
+        Added success ->
+            ShareAdded.shareAdded success
             
              
         

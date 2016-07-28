@@ -52,7 +52,7 @@ update msg model =
                     ( model, Cmd.none )
     
         AddSuccess item ->
-            ( Added item, Cmd.none )
+            ( Added True, Cmd.none )
 
         AddFail err ->
-            ( Added (ShareItem 0 "失败了" "失败了" "失败"), Cmd.none )
+            ( Added False, Cmd.none )
