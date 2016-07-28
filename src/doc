@@ -65,5 +65,17 @@ google下: elm How to debug
 
 bug: get-share , size大的话,结果会爆
 
+2016-07-28
+
+终于找到为什么点了submit之后，提交add-share之后，又会刷到首页.
+
+-                input [ class "btn btn-primary", type' "submit", value "Submit", onClick SubmitAddShare ] []
++                input [ class "btn btn-primary", value "Submit", onClick SubmitAddShare ] []
+
+就是这个区别。。type 为 submit的时候就会刷到首页.
+
+
+
+
 
 

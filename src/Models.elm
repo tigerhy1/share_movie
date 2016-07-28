@@ -2,7 +2,7 @@ module Models exposing (..)
 
 
 type Model =
-    ShowListModel (List ShareItem) | AddModel ShareItem
+    ShowListModel (List ShareItem) | AddModel ShareItem | Added ShareItem
 
 type alias ShareItem = 
     { id : Int 

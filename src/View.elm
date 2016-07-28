@@ -33,6 +33,13 @@ view model =
                     [ ShareAdd.addShare item
                     ]
                 ]
+        Added item ->
+            div [ class "container-fluid"]
+                [ div [] [ text "失败了吗？"]
+                , div [] [ text item.user_name]
+                , div [] [ text item.movie_name]
+                , div [] [ text item.share_comment]
+                ]
             
              
         

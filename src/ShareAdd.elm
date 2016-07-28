@@ -19,7 +19,7 @@ addShare item =
                 textarea [ class "form-control", rows 3, name "comment", id "comment", onInput ChangeComment ] []
               ]
             , div [ class "form-group" ] [
-                input [ class "btn btn-primary", type' "submit", value "Submit", onClick SubmitAddShare ] []
+                input [ class "btn btn-primary", value "Submit", onClick SubmitAddShare ] []
               ]
             ]
         ] 

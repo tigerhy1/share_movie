@@ -30,12 +30,16 @@ update msg model =
                     ( AddModel (ShareItem (toInt id |> Result.toMaybe |> Maybe.withDefault 0 ) item.user_name item.movie_name item.share_comment), Cmd.none ) 
                 ShowListModel list ->
                     ( model, Cmd.none )
+                Added item ->
+                    ( model, Cmd.none )
 
         ChangeName name ->
             case model of 
                 AddModel item ->
                     ( AddModel (ShareItem item.id item.user_name name item.share_comment), Cmd.none ) 
                 ShowListModel list ->
+                    ( model, Cmd.none )
+                Added item ->
                     ( model, Cmd.none )
 
         ChangeComment comment ->
@@ -44,9 +48,11 @@ update msg model =
                     ( AddModel (ShareItem item.id item.user_name item.movie_name comment ) , Cmd.none )
                 ShowListModel list ->
                     ( model, Cmd.none )
+                Added item ->
+                    ( model, Cmd.none )
     
         AddSuccess item ->
-            ( AddModel (ShareItem 0 "" "" ""), Cmd.none ) 
+            ( Added item, Cmd.none )
 
         AddFail err ->
-            ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
+            ( Added (ShareItem 0 "失败了" "失败了" "失败"), Cmd.none )
