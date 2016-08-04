@@ -80,6 +80,49 @@ bug: get-share , size大的话,结果会爆
 
 有一种情况，add share的时候，要避免是空这种情况.
 
+下一步就是微信登陆了.
+
+2016-07-29
+
+想了下部署的方式，最开始的部署：
+
+1. 先可以不用DNS,因为貌似支持只填IP的回调地址。
+
+2. html和js等，放到nginx下
+
+3. clojure还是自己lein run,之后再用nginx做转发.
+
+2016-08-03
+
+elm在linux虚拟机上装不上，还是用nginx做转发吧.
+
+解决了style不对的问题.是因为没有npm run build...
+
+有机会的话，需要把域名和端口做成配置.
+
+跑通了！需要把localhost改成ip才行。原理其实没有完全理解.
+
+
+2016-08-04
+
+上到微信公众号上了，有个地方需要调整，在手机浏览器上大小会变。。
+
+我猜测应该是因为css, boostrap的问题.
+
+先解决这个问题，然后再弄微信登陆.
+
+google关键字:bootstrap mobile auto zoom in，迅速搞定.
+
+在index.html里加了:
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+但是好像不是最佳解决方式，先暂时这样吧.
+
+还有没有日期的问题.
+
+
+
+
 
 
 

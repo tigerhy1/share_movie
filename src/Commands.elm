@@ -32,7 +32,7 @@ fetchAllUrl =
     "http://localhost:4000/shares"
     --}
     {----}
-    "http://localhost:8080/get-test"
+    "http://114.215.112.211:8080/get-test"
     --}
 
 collectionDecoder : Decode.Decoder (List ShareItem)
@@ -52,7 +52,7 @@ addUrl =
     {--
     "http://localhost:4000/shares/"
     --}
-    "http://localhost:8080/add-share"
+    "http://114.215.112.211:8080/add-share"
 
 addTask : ShareItem -> Task.Task Http.Error ShareItem
 addTask item =
@@ -81,6 +81,9 @@ add model =
 
         ShowListModel list -> 
             Cmd.none 
+            
+        Added flag ->
+            Cmd.none
             
 
 shareItemEncoded : ShareItem -> Encode.Value

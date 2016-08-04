@@ -35,7 +35,7 @@ shareItemRow item =
             ]
             [ text item.share_comment ],
           p [ style 
-                    [ ("font-size", "0.1em"), 
+                    [ 
                       ("font-style", "oblique")
                     ]
                ]
