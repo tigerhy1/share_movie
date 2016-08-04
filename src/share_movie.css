@@ -9,3 +9,9 @@
 .my-box {
     width: 480px;
 }
+
+textarea, input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

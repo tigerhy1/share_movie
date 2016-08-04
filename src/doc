@@ -116,9 +116,22 @@ google关键字:bootstrap mobile auto zoom in，迅速搞定.
 在index.html里加了:
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
+参考:https://jonassebastianohlsson.com/blog/2013/11/25/how-to-stop-zoom-in-on-input-focus-on-mobile-devices/
+
 但是好像不是最佳解决方式，先暂时这样吧.
 
-还有没有日期的问题.
+还有没有日期的问题:由于字调的太小的原因吧.
+
+现在输入界面的输入框，和button的感觉怪怪的.
+
+加了这个就好了.
+textarea, input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+发现webkit会自己自行处理一些东西
 
 
 
