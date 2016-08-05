@@ -133,6 +133,14 @@ textarea, input {
 
 发现webkit会自己自行处理一些东西
 
+外观调整完了，下一步就是接入微信登陆了.
+
+session的理解，感觉还是不是很透彻.
+
+我直接在restful_clojure这边设置session是可以的吗?来验证一下
+
+有个问题:cookie和session有什么联系?
+
 
 
 
