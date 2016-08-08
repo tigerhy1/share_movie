@@ -22,8 +22,17 @@ fetchTask =
                 , url = fetchAllUrl
                 , body = body
                 }
+                
+        setting = {
+            timeout = 0
+            , onStart = Nothing
+            , onProgress = Nothing
+            , desiredResponseType = Nothing
+            , withCredentials = True
+        }
+        
     in 
-        Http.send Http.defaultSettings config
+        Http.send setting config
             |> Http.fromJson collectionDecoder
 
 fetchAllUrl : String
