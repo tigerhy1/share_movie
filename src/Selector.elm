@@ -12,6 +12,9 @@ showSelector =
               [ class "btn btn-primary m1", onClick ShowList ] 
               [ text "Show"]
         , button 
+              [ class "btn btn-primary m1", onClick ShowListMore ] 
+              [ text "ShowMore"]
+        , button 
               [ class "btn btn-primary m1", onClick AddShare ] 
               [ text "Add"]
         ]  

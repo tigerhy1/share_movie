@@ -15,10 +15,10 @@ init =
          { list = [ ShareItem 1 "a" "b" "d"
                   , ShareItem 2 "c" "d" "d"
                   ]
-         , start = 1
-         , end = 2
+         , start = 0
+         , end = 0
          } 
-     , fetchAll 0 20)
+     , fetchAll 0 5)
  
 
 -- SUBSCRIPTIONS

@@ -16,7 +16,7 @@ mergeShares showListData l =
         
         last = Maybe.withDefault (ShareItem 0 "" "" "") ( head l )
         
-        newStart = min first.id start
+        newStart = if (start == 0) then first.id else (min first.id start)
         
         newEnd = max last.id end
         
@@ -35,7 +35,7 @@ update msg model =
                  , start = 0
                  , end = 0
                  } 
-            , fetchAll 0 20 )
+            , fetchAll 0 5 )
             
         ShowListMore ->
             case model of
@@ -44,7 +44,7 @@ update msg model =
                         { start
                         } = data
                     in 
-                        ( model, fetchAll (start - 1) 20)
+                        ( model, if ( start > 1 ) then (fetchAll (start - 1) 5) else Cmd.none)
                 _ ->
                     ( model, Cmd.none)
         

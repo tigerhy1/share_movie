@@ -193,5 +193,9 @@ http://qiita.com/kimagure/items/57cdd08bdf56cc51d294
 
 现在要用start和end参数来动态去服务端拿数据了.
 
-     
+看到了问题所在..start参数为0
+
+还有一个问题:start又会回到0.
+
+嘿嘿,都fix掉了.
      
