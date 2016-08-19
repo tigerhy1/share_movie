@@ -6,15 +6,19 @@ import Json.Encode as Encode
 import Task
 import Models exposing (ShareItem, Model(..))
 import Messages exposing (Msg(..))
+import String exposing (concat)
 
-fetchAll : Cmd Msg
-fetchAll =
-    fetchTask
-    |> Task.perform FetchAllFail FetchAllDone
+fetchAll : Int -> Int -> Cmd Msg
+fetchAll offset size =
+    fetchTask offset size
+        |> Task.perform FetchAllFail FetchAllDone
 
-fetchTask : Task.Task Http.Error (List ShareItem)
-fetchTask =
-    let body = Http.string ("""{ "offset":0,"size":5 }""")
+fetchTask : Int -> Int -> Task.Task Http.Error (List ShareItem)
+fetchTask offset size =
+    let 
+        strList = ["""{ "offset":""", toString offset, ""","size":""", toString size, " }"]
+        
+        body = Http.string (concat strList)
     
         config ={ verb = "POST"
                 , headers = [ ( "Content-Type", "application/json" ) ]

@@ -11,11 +11,14 @@ import Commands exposing (fetchAll)
 
 init : ( Model, Cmd Msg )
 init =
-    (ShowListModel 
-     [ ShareItem 1 "a" "b" "d"
-     , ShareItem 2 "c" "d" "d"
-     ]  
-     , fetchAll )
+    (ShowListModel
+         { list = [ ShareItem 1 "a" "b" "d"
+                  , ShareItem 2 "c" "d" "d"
+                  ]
+         , start = 1
+         , end = 2
+         } 
+     , fetchAll 0 20)
  
 
 -- SUBSCRIPTIONS

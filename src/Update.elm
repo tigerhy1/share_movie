@@ -4,31 +4,75 @@ import Messages exposing (Msg(..))
 import Models exposing (..)
 import Commands exposing (fetchAll, add)
 import String exposing (toInt)
+import List exposing (append, head, reverse)
+
+mergeShares : ShowListData -> (List ShareItem) -> ShowListData
+mergeShares showListData l =
+    let 
+        { list, start, end } 
+        = showListData
+        
+        first = Maybe.withDefault (ShareItem 0 "" "" "") ( head (reverse l) )
+        
+        last = Maybe.withDefault (ShareItem 0 "" "" "") ( head l )
+        
+        newStart = min first.id start
+        
+        newEnd = max last.id end
+        
+    in 
+        { list = append list l 
+        , start = newStart
+        , end = newEnd
+        }
 
 update : Msg -> Model ->( Model, Cmd Msg )
 update msg model =
     case msg of 
         ShowList ->
-            ( model, fetchAll )
+            ( ShowListModel
+                 { list = []
+                 , start = 0
+                 , end = 0
+                 } 
+            , fetchAll 0 20 )
+            
+        ShowListMore ->
+            case model of
+                ShowListModel data ->
+                    let
+                        { start
+                        } = data
+                    in 
+                        ( model, fetchAll (start - 1) 20)
+                _ ->
+                    ( model, Cmd.none)
         
         AddShare ->
             ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
 
         FetchAllDone shares ->
-            ( ShowListModel shares, Cmd.none )
+            case model of
+                AddModel item ->
+                    ( model, Cmd.none )
+                ShowListModel data ->
+                    ( ShowListModel (mergeShares data shares), Cmd.none )
+                Added item ->
+                    ( model, Cmd.none )
             {--( AddModel (ShareItem 0 "" "" ""), Cmd.none )--}
 
         FetchAllFail error ->
             ( model, Cmd.none )
       
         SubmitAddShare ->
-            ( AddModel (ShareItem 0 "" "" ""), add model ) 
+            ( AddModel (ShareItem 0 "" "" ""), add model )
+            {--( AddModel (ShareItem 0 "" "" ""), Cmd.none )--}
     
         ChangeId id ->
             case model of
                 AddModel item ->
                     ( AddModel (ShareItem (toInt id |> Result.toMaybe |> Maybe.withDefault 0 ) item.user_name item.movie_name item.share_comment), Cmd.none ) 
-                ShowListModel list ->
+                ShowListModel data ->
                     ( model, Cmd.none )
                 Added item ->
                     ( model, Cmd.none )

@@ -13,7 +13,7 @@ import Html.Events exposing (onClick)
 view : Model -> Html Msg
 view model =
     case model of
-        ShowListModel list  -> 
+        ShowListModel data  -> 
             div[ class "container-fluid"]
                [ div [ class "row m1" ] []
                 {--
@@ -21,7 +21,7 @@ view model =
                     [],
                 --}
                , div [ class "m1"] 
-                    [ ShareList.showList list 
+                    [ ShareList.showList data 
                     , showSelector  
                     ]
                 {--

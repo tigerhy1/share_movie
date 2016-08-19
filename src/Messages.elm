@@ -5,6 +5,7 @@ import Models exposing (ShareItem)
 
 type Msg
    = ShowList 
+   | ShowListMore
    | AddShare
    | FetchAllDone (List ShareItem)
    | FetchAllFail Http.Error
