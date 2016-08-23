@@ -12,9 +12,7 @@ import Commands exposing (fetchAll)
 init : ( Model, Cmd Msg )
 init =
     (ShowListModel
-         { list = [ ShareItem 1 "a" "b" "d"
-                  , ShareItem 2 "c" "d" "d"
-                  ]
+         { list = []
          , start = 0
          , end = 0
          } 

@@ -81,8 +81,16 @@ addTask item =
             , url = addUrl
             , body = body
             }
+            
+        setting = {
+            timeout = 0
+            , onStart = Nothing
+            , onProgress = Nothing
+            , desiredResponseType = Nothing
+            , withCredentials = True
+        }
     in 
-        Http.send Http.defaultSettings config
+        Http.send setting config
             |> Http.fromJson shareItemDecoder
 
 add : Model -> Cmd Msg
