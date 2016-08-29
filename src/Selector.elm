@@ -16,6 +16,6 @@ showSelector =
               [ text "ShowMore"]
         , button 
               [ class "btn btn-primary m1", onClick AddShare ] 
-              [ text "Add"]
+              [ text "Addx"]
         ]  
 

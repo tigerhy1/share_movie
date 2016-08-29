@@ -1,7 +1,7 @@
 module View exposing (..)
 
-import Html exposing (Html, div, text, button, h1)
-import Html.Attributes exposing (class)
+import Html exposing (Html, div, ul, li, text, button, h1, a)
+import Html.Attributes exposing (class, attribute, href)
 import Messages exposing (..)
 import Models exposing (Model(..))
 import ShareList exposing (showList)
@@ -16,12 +16,17 @@ view model =
         ShowListModel data  -> 
             div[ class "container-fluid"]
                [ div [ class "row m1" ] []
-                {--
-                div [ class "col-md-2 col-xs-1"]
-                    [],
-                --}
                , div [ class "m1"] 
-                    [ ShareList.showList data 
+                    [
+                        ul  [ class "nav nav-pills" ]
+                        [ li [ class "active" ] 
+                             [ a [ href "" ] [ text "Show" ] ] 
+                        , li []
+                             [ a [ ] [ text "ShowMore" ] ]
+                        , li []
+                             [ a [ href "#add" ] [ text "Add" ] ]
+                        ]
+                    , ShareList.showList data 
                     , showSelector  
                     ]
                 {--
