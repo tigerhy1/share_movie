@@ -7,8 +7,25 @@ import Models exposing (Model(..))
 import ShareList exposing (showList)
 import ShareAdd exposing (addShare)
 import ShareAdded exposing (shareAdded)
-import Selector exposing (..)
+--import Selector exposing (..)
+import LoadMore exposing (loadMore)
 import Html.Events exposing (onClick)
+
+classStr : Int -> Int -> String
+classStr idxRef idx =
+    if idx == idxRef then "m1 active" else "m1"
+    
+
+tabNav : Int -> Html Msg
+tabNav idx =
+    ul  [ class "nav nav-pills" ]
+        [ li [ class (classStr 1 idx) ] 
+             [ a [ href "#index" ] [ text "Show" ] ] 
+        , li [ class (classStr 2 idx) ]
+             [ a [ ] [ text "ShowMore" ] ]
+        , li [ class (classStr 3 idx) ]
+             [ a [ href "#add" ] [ text "Add" ] ]
+        ]
 
 view : Model -> Html Msg
 view model =
@@ -17,17 +34,9 @@ view model =
             div[ class "container-fluid"]
                [ div [ class "row m1" ] []
                , div [ class "m1"] 
-                    [
-                        ul  [ class "nav nav-pills" ]
-                        [ li [ class "active" ] 
-                             [ a [ href "" ] [ text "Show" ] ] 
-                        , li []
-                             [ a [ ] [ text "ShowMore" ] ]
-                        , li []
-                             [ a [ href "#add" ] [ text "Add" ] ]
-                        ]
+                    [ tabNav 1
                     , ShareList.showList data 
-                    , showSelector  
+                    , loadMore  
                     ]
                 {--
                 div [ class "col-md-2 col-xs-1"]
@@ -36,8 +45,10 @@ view model =
                ]
         AddModel item ->
             div [ class "container-fluid" ]
-                [ div [class "m1"] 
-                    [ ShareAdd.addShare item
+                [ div [ class "row m1" ] []
+                , div [class "m1"] 
+                    [ tabNav 3
+                    , ShareAdd.addShare item
                     ]
                 ]
         Added success ->

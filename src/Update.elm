@@ -72,27 +72,21 @@ update msg model =
             case model of
                 AddModel item ->
                     ( AddModel (ShareItem (toInt id |> Result.toMaybe |> Maybe.withDefault 0 ) item.user_name item.movie_name item.share_comment), Cmd.none ) 
-                ShowListModel data ->
-                    ( model, Cmd.none )
-                Added item ->
+                _ ->
                     ( model, Cmd.none )
 
         ChangeName name ->
             case model of 
                 AddModel item ->
                     ( AddModel (ShareItem item.id item.user_name name item.share_comment), Cmd.none ) 
-                ShowListModel list ->
-                    ( model, Cmd.none )
-                Added item ->
+                _ ->
                     ( model, Cmd.none )
 
         ChangeComment comment ->
             case model of 
                 AddModel item ->
                     ( AddModel (ShareItem item.id item.user_name item.movie_name comment ) , Cmd.none )
-                ShowListModel list ->
-                    ( model, Cmd.none )
-                Added item ->
+                _ ->
                     ( model, Cmd.none )
     
         AddSuccess item ->

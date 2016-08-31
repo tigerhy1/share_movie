@@ -13,7 +13,7 @@ type Route
 matchers : Parser (Route -> a) a
 matchers =
     oneOf
-        [ format ShowListRoute (s "")
+        [ format ShowListRoute (s "index")
         , format ShowAddRoute (s "add")
         ]
 

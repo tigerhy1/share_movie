@@ -11,15 +11,14 @@ import Routing exposing (..)
 import Navigation
 import Debug exposing(log)
 
-
---init : ( Model, Cmd Msg )
---init =
---    (ShowListModel
---         { list = []
---         , start = 0
---         , end = 0
---         } 
---     , fetchAll 0 5)
+initStatus : ( Model, Cmd Msg)
+initStatus = 
+             ( ShowListModel
+                  { list = []
+                  , start = 0
+                  , end = 0
+                  } 
+             , fetchAll 0 5 )
 
 init : Result String Route -> ( Model, Cmd Msg )
 init result =
@@ -29,18 +28,13 @@ init result =
     in 
         case currentRoute of
             ShowListRoute ->
-                ( ShowListModel
-                  { list = []
-                  , start = 0
-                  , end = 0
-                  } 
-                  , fetchAll 0 5 )
+                initStatus
             
             ShowAddRoute ->
                 ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
                 
             _ ->
-                ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
+                initStatus
 
 
 -- SUBSCRIPTIONS
@@ -59,18 +53,13 @@ urlUpdate result model =
     in 
         case currentRoute of
             ShowListRoute ->
-                ( ShowListModel
-                  { list = []
-                  , start = 0
-                  , end = 0
-                  } 
-                  , fetchAll 0 5 )
+                initStatus
             
             ShowAddRoute ->
                 ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
                 
             _ ->
-                ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
+                initStatus
 
 -- MAIN
 
