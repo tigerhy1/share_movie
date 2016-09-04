@@ -20,11 +20,11 @@ tabNav : Int -> Html Msg
 tabNav idx =
     ul  [ class "nav nav-pills" ]
         [ li [ class (classStr 1 idx) ] 
-             [ a [ href "#index" ] [ text "Show" ] ] 
+             [ a [ href "#index" ] [ text "最新" ] ] 
         , li [ class (classStr 2 idx) ]
-             [ a [ ] [ text "ShowMore" ] ]
+             [ a [ ] [ text "喜欢" ] ]
         , li [ class (classStr 3 idx) ]
-             [ a [ href "#add" ] [ text "Add" ] ]
+             [ a [ href "#add" ] [ text "分享" ] ]
         ]
 
 view : Model -> Html Msg

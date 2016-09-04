@@ -6,7 +6,9 @@ import Json.Encode as Encode
 import Task
 import Models exposing (ShareItem, Model(..))
 import Messages exposing (Msg(..))
-import String exposing (concat)
+import String exposing (concat, append)
+import Debug exposing (log)
+import Conf exposing (restfulAddress)
 
 fetchAll : Int -> Int -> Cmd Msg
 fetchAll offset size =
@@ -36,17 +38,13 @@ fetchTask offset size =
         }
         
     in 
-        Http.send setting config
-            |> Http.fromJson collectionDecoder
+        log "send = " (Http.send setting config
+            |> Http.fromJson collectionDecoder)
 
 fetchAllUrl : String
 fetchAllUrl =
-    {--
-    "http://localhost:4000/shares"
-    --}
-    {----}
-    "http://114.215.112.211:8080/get-test"
-    --}
+    append  restfulAddress "/get-test"
+    
 
 collectionDecoder : Decode.Decoder (List ShareItem)
 collectionDecoder =
@@ -62,10 +60,7 @@ shareItemDecoder =
         
 addUrl : String
 addUrl =
-    {--
-    "http://localhost:4000/shares/"
-    --}
-    "http://114.215.112.211:8080/add-share"
+    append restfulAddress "/add-share"
 
 addTask : ShareItem -> Task.Task Http.Error ShareItem
 addTask item =
