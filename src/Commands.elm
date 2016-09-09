@@ -52,11 +52,12 @@ collectionDecoder =
 
 shareItemDecoder : Decode.Decoder ShareItem
 shareItemDecoder =
-    Decode.object4 ShareItem
+    Decode.object5 ShareItem
         ("id" := Decode.int)
         ("user_name" := Decode.string)
         ("movie_name" := Decode.string)
         ("share_comment" := Decode.string)
+        ("created_at" := Decode.string)
         
 addUrl : String
 addUrl =

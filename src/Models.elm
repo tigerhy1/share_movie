@@ -9,6 +9,7 @@ type alias ShareItem =
     , user_name : String
     , movie_name : String
     , share_comment : String
+    , created_at : String
     }
 
 type alias ShowListData =
@@ -16,6 +17,13 @@ type alias ShowListData =
     , start : Int
     , end : Int
     }
+    
+    
+initShareItem : ShareItem
+initShareItem = 
+    (ShareItem 0 "" "" "" "")
+    
+
 
 
 

@@ -48,6 +48,6 @@ shareItemRow item =
                       ("font-style", "oblique")
                     ]
                ]
-               [ text "@2016-07-08 11:18"
+               [ text (append "@" item.created_at)
                ]
         ]

@@ -5,6 +5,7 @@ import Models exposing (..)
 import Commands exposing (fetchAll, add)
 import String exposing (toInt)
 import List exposing (append, head, reverse)
+import Debug exposing (log)
 
 mergeShares : ShowListData -> (List ShareItem) -> ShowListData
 mergeShares showListData l =
@@ -12,9 +13,9 @@ mergeShares showListData l =
         { list, start, end } 
         = showListData
         
-        first = Maybe.withDefault (ShareItem 0 "" "" "") ( head (reverse l) )
+        first = Maybe.withDefault initShareItem ( head (reverse l) )
         
-        last = Maybe.withDefault (ShareItem 0 "" "" "") ( head l )
+        last = Maybe.withDefault initShareItem ( head l )
         
         newStart = if (start == 0) then first.id else (min first.id start)
         
@@ -49,7 +50,7 @@ update msg model =
                     ( model, Cmd.none)
         
         AddShare ->
-            ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
+            ( AddModel initShareItem, Cmd.none )
 
         FetchAllDone shares ->
             case model of
@@ -65,27 +66,27 @@ update msg model =
             ( model, Cmd.none )
       
         SubmitAddShare ->
-            ( AddModel (ShareItem 0 "" "" ""), add model )
+            ( AddModel initShareItem, add model )
             {--( AddModel (ShareItem 0 "" "" ""), Cmd.none )--}
     
         ChangeId id ->
             case model of
                 AddModel item ->
-                    ( AddModel (ShareItem (toInt id |> Result.toMaybe |> Maybe.withDefault 0 ) item.user_name item.movie_name item.share_comment), Cmd.none ) 
+                    ( AddModel (ShareItem (toInt id |> Result.toMaybe |> Maybe.withDefault 0 ) item.user_name item.movie_name item.share_comment ""), Cmd.none ) 
                 _ ->
                     ( model, Cmd.none )
 
         ChangeName name ->
             case model of 
                 AddModel item ->
-                    ( AddModel (ShareItem item.id item.user_name name item.share_comment), Cmd.none ) 
+                    ( AddModel (ShareItem item.id item.user_name name item.share_comment ""), Cmd.none ) 
                 _ ->
                     ( model, Cmd.none )
 
         ChangeComment comment ->
             case model of 
                 AddModel item ->
-                    ( AddModel (ShareItem item.id item.user_name item.movie_name comment ) , Cmd.none )
+                    ( AddModel (ShareItem item.id item.user_name item.movie_name comment "") , Cmd.none )
                 _ ->
                     ( model, Cmd.none )
     

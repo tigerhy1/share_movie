@@ -31,7 +31,7 @@ init result =
                 initStatus
             
             ShowAddRoute ->
-                ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
+                ( AddModel initShareItem, Cmd.none )
                 
             _ ->
                 initStatus
@@ -56,7 +56,7 @@ urlUpdate result model =
                 initStatus
             
             ShowAddRoute ->
-                ( AddModel (ShareItem 0 "" "" ""), Cmd.none )
+                ( AddModel initShareItem, Cmd.none )
                 
             _ ->
                 initStatus
